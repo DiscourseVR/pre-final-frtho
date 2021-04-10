@@ -17,7 +17,7 @@ namespace Mirror
     public class NetworkManagerHUD : MonoBehaviour
     {
         NetworkManager manager;
-        public GameObject canvas;
+        GameObject parent;
 
         /// <summary>
         /// Whether to show the default control HUD at runtime.
@@ -75,9 +75,10 @@ namespace Mirror
             GUILayout.EndArea();
         }
 
-        public void StartGame(string setting)
+        
+        public void StartGame(string setting, string ip)
         {
-            manager.networkAddress = "192.168.2.104";
+            manager.networkAddress = ip;
 
             if (setting == "VR Host" || setting == "Spectator Host")
             {
@@ -93,12 +94,31 @@ namespace Mirror
             {
                 manager.StartServer();
             }
-
-            canvas.SetActive(false);
         }
+        
 
         void StartButtons()
         {
+            /*
+            if (!NetworkClient.active)
+            {
+                manager.networkAddress = GUILayout.TextField(manager.networkAddress);
+                datatest data = parent.GetComponent<datatest>();
+                if (datatest.Host_VR || datatest.Host_Spectate)
+                {
+                    manager.StartHost();
+                }
+                else if (datatest.Client_VR || datatest.Client_Web || datatest.Client_Camera)
+                {
+                    manager.StartClient();
+                }
+
+                //GUILayout.TextField(manager.networkAddress);
+                if (Server_Only == "Server Only")
+                {
+                    manager.StartServer();
+                }
+            } */
 
             /*
             if (!NetworkClient.active)
