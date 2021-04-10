@@ -80,7 +80,7 @@ namespace Mirror
         {
             manager.networkAddress = ip;
 
-            if (setting == "VR Host" || setting == "Spectator Host")
+            if (setting == "VR Host" || setting == "Spectator Host" || setting == "Recorder Host")
             {
                 manager.StartHost();
             }

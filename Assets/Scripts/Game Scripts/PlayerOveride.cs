@@ -14,13 +14,6 @@ public class PlayerOveride : NetworkManager
     public GameObject spectator;
     public GameObject recorder;
 
-    public bool Server_Only;
-    public bool Host_VR;
-    public bool Host_Spectate;
-    public bool Client_VR;
-    public bool Client_Web;
-    public bool Client_Camera;
-
     string wantedMode;
     public void setMode(string wanted)
     {

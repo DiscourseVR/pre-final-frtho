@@ -1436,8 +1436,9 @@ MonoBehaviour:
   networkManager: {fileID: 706709561}
   ip: 192.168.2.104
   Server_Only: 0
-  Host_VR: 1
+  Host_VR: 0
   Host_Spectate: 0
+  Host_Camera: 1
   Client_Camera: 0
   Client_Web: 0
   Client_VR: 0
@@ -1671,18 +1672,13 @@ MonoBehaviour:
   spawnPrefabs:
   - {fileID: 1573536168937357549, guid: 54851b6ce85a2b4419883b6b89660016, type: 3}
   - {fileID: 3533211282661335010, guid: e659680625ca12349bda03863f1411e7, type: 3}
+  - {fileID: 2358284828920617435, guid: d2d95d000dd7f3145a89c12d6f979a7c, type: 3}
   VRPlayer: {fileID: 1573536168937357549, guid: 54851b6ce85a2b4419883b6b89660016,
     type: 3}
   spectator: {fileID: 3533211282661335010, guid: e659680625ca12349bda03863f1411e7,
     type: 3}
-  recorder: {fileID: 3533211282661335010, guid: e659680625ca12349bda03863f1411e7,
+  recorder: {fileID: 2358284828920617435, guid: d2d95d000dd7f3145a89c12d6f979a7c,
     type: 3}
-  Server_Only: 0
-  Host_VR: 0
-  Host_Spectate: 0
-  Client_VR: 0
-  Client_Web: 0
-  Client_Camera: 0
 --- !u!1 &905726326
 GameObject:
   m_ObjectHideFlags: 0

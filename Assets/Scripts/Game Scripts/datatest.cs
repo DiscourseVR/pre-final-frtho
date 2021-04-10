@@ -10,6 +10,7 @@ public class datatest : MonoBehaviour
     public bool Server_Only;
     public bool Host_VR;
     public bool Host_Spectate;
+    public bool Host_Camera;
     public bool Client_Camera;
     public bool Client_Web;
     public bool Client_VR;
@@ -17,7 +18,7 @@ public class datatest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     bool done = false;
@@ -28,7 +29,7 @@ public class datatest : MonoBehaviour
         {
             done = true;
 
-            string name = Server_Only ? "Server Only" : ( Host_VR ? "VR Host" : (Host_Spectate ? "Spectator Host" : (Client_Camera ? "Recorder" : (Client_Web ? "Web Client" : "VR Client"))));
+            string name = Server_Only ? "Server Only" : (Host_VR ? "VR Host" : (Host_Spectate ? "Spectator Host" : (Host_Camera ? "Recorder Host" : (Client_Camera ? "Recorder" : (Client_Web ? "Web Client" : "VR Client")))));
             Debug.Log("Starting as " + name);
 
             if (name == "Web Client" || name == "Recorder")
@@ -38,6 +39,10 @@ public class datatest : MonoBehaviour
             else if (name == "Spectator Host")
             {
                 networkManager.GetComponent<PlayerOveride>().setMode("Web Client");
+            }
+            else if (name == "Recorder Host")
+            {
+                networkManager.GetComponent<PlayerOveride>().setMode("Recorder");
             }
             else
             {
