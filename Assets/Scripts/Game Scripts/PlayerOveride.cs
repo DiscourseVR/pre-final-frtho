@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-
 public struct PlayerDetails : NetworkMessage
 {
     public string clientType;
@@ -43,6 +42,7 @@ public class PlayerOveride : NetworkManager
 
     void OnCreateCharacter(NetworkConnection conn, PlayerDetails message)
     {
+        Debug.Log("Creating character with mode: " + message.clientType);
         Dictionary<string, GameObject> hash = new Dictionary<string, GameObject>();
         hash.Add("Recorder", recorder);
         hash.Add("VR Client", VRPlayer);

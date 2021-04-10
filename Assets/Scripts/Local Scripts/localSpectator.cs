@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Dissonance;
 
 public class localSpectator : NetworkBehaviour
 {
@@ -14,6 +15,9 @@ public class localSpectator : NetworkBehaviour
         if (isLocalPlayer)
         {
             ((Camera)camera.GetComponent<Camera>()).enabled = true;
+            GameObject dissonance = GameObject.Find("DissonanceSetup");
+            DissonanceComms comms = dissonance.GetComponent<DissonanceComms>();
+            comms.IsMuted = true;
         }
     }
 
@@ -22,7 +26,7 @@ public class localSpectator : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
+            transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime, 0f, Input.GetAxis("Vertical") * Time.deltaTime);
         }
     }
 }

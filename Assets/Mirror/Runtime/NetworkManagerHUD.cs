@@ -75,21 +75,22 @@ namespace Mirror
             GUILayout.EndArea();
         }
 
-        public void StartGame(string wanted)
+        public void StartGame(string setting)
         {
-            // set local player prefab?
-            if (wanted == "Host Client") {
+            manager.networkAddress = "192.168.2.104";
+
+            if (setting == "VR Host" || setting == "Spectator Host")
+            {
                 manager.StartHost();
-            } else if (wanted == "VR Client") {
-                manager.StartClient();
-            } else if (wanted == "Web Client") {
-                manager.StartClient();
-            } else if (wanted == "Recorder") {
+            }
+            else if (setting == "VR Client" || setting == "Web Client" || setting == "Recorder")
+            {
                 manager.StartClient();
             }
 
-            manager.networkAddress = GUILayout.TextField(manager.networkAddress);
-            if (wanted == "Server Only") {
+            //GUILayout.TextField(manager.networkAddress);
+            if (setting == "Server Only")
+            {
                 manager.StartServer();
             }
 
@@ -98,13 +99,11 @@ namespace Mirror
 
         void StartButtons()
         {
+
+            /*
             if (!NetworkClient.active)
             {
-                //manager.networkAddress = GUILayout.TextField(manager.networkAddress);
-                //manager.StartClient();
 
-                //manager.networkAddress = GUILayout.TextField(manager.networkAddress);
-                //manager.StartServer();
                 
                 
                 // Server + Client
@@ -146,6 +145,7 @@ namespace Mirror
                     manager.StopClient();
                 }
             }
+            */
         }
 
         void StatusLabels()

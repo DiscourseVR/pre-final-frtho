@@ -21,6 +21,9 @@ public class buttonSelect : MonoBehaviour
         if (name == "Web Client" || name == "Recorder")
         {
             networkManager.GetComponent<PlayerOveride>().setMode(name);
+        }else if (name == "Spectator Host")
+        {
+            networkManager.GetComponent<PlayerOveride>().setMode("Web Client");
         }
         else
         {
@@ -28,6 +31,7 @@ public class buttonSelect : MonoBehaviour
         }
 
         networkManager.GetComponent<NetworkManagerHUD>().StartGame(name);
+        Debug.Log("Task completed");
     }
 
     // Update is called once per frame
