@@ -6,7 +6,6 @@ using Dissonance;
 
 public class localCamera : NetworkBehaviour
 {
-    public GameObject parent;
     public GameObject part1;
     public GameObject part2;
 
@@ -15,7 +14,6 @@ public class localCamera : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            parent.SetActive(true);
             part1.SetActive(true);
             part2.SetActive(true);
 
