@@ -22,13 +22,14 @@ public class debateManager : NetworkBehaviour
         new intermissionMode { message  = "Preperation", timer = 20 },
         new intermissionMode { message  = "Debater 1", timer = 60 },
         new intermissionMode { message  = "Intermission", timer = 15 },
-        new intermissionMode { message  = "Debater 2", timer = 60 }
+        new intermissionMode { message  = "Debater 2", timer = 60 },
+        new intermissionMode { message  = "Debate Conclusion", timer = 5 }
     };
     
     void nextMode()
     {
         Debug.Log("Switching modes");
-        mode = (mode + 1) % 5;
+        mode = (mode + 1) % 6;
         timeSpent = 0; //Time.unscaledTime;
         textSync.countdown = modes[mode].timer;
         textSync.stringMode = modes[mode].message;
@@ -76,7 +77,7 @@ public class debateManager : NetworkBehaviour
             {
                 timeSpent += Time.deltaTime;
                 int remaining = modes[mode].timer - (int)timeSpent;
-                if (remaining < 1)
+                if (remaining < 0)
                 {
                     nextMode();
                 }
