@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32547218, g: 0.26310852, b: 0.37403476, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -319,8 +319,8 @@ MonoBehaviour:
   networkManager: {fileID: 706709561}
   ip: 192.168.2.104
   Server_Only: 0
-  Host_VR: 1
-  Host_Spectate: 0
+  Host_VR: 0
+  Host_Spectate: 1
   Host_Camera: 0
   Client_Camera: 0
   Client_Web: 0
@@ -441,17 +441,18 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 1573536168937357549, guid: 54851b6ce85a2b4419883b6b89660016, type: 3}
-  - {fileID: 3533211282661335010, guid: e659680625ca12349bda03863f1411e7, type: 3}
+  - {fileID: 3170606128616077503, guid: e659680625ca12349bda03863f1411e7, type: 3}
   - {fileID: 2358284828920617435, guid: d2d95d000dd7f3145a89c12d6f979a7c, type: 3}
   VRPlayer: {fileID: 1573536168937357549, guid: 54851b6ce85a2b4419883b6b89660016,
     type: 3}
-  spectator: {fileID: 3533211282661335010, guid: e659680625ca12349bda03863f1411e7,
+  spectator: {fileID: 3170606128616077503, guid: e659680625ca12349bda03863f1411e7,
     type: 3}
   recorder: {fileID: 2358284828920617435, guid: d2d95d000dd7f3145a89c12d6f979a7c,
     type: 3}
   spawnLocations: {fileID: 6754773747079941934}
   players: 0
   spectators: 0
+  allPlayers: 0
 --- !u!1 &816750921
 GameObject:
   m_ObjectHideFlags: 0

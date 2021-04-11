@@ -29,4 +29,9 @@ public class localSpectator : NetworkBehaviour
             transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime, 0f, Input.GetAxis("Vertical") * Time.deltaTime);
         }
     }
+
+    public void remote()
+    {
+
+    }
 }
