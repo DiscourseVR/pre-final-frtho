@@ -43,6 +43,7 @@ public class PlayerOveride : NetworkManager
 
     public int players = 0;
     public int spectators = 0;
+    public int allPlayers = 0;
 
     void OnCreateCharacter(NetworkConnection conn, PlayerDetails message)
     {
@@ -59,7 +60,9 @@ public class PlayerOveride : NetworkManager
         {
             selectSpawn = "Player " + players.ToString();
             players = (players + 1) % 2;
-        }else if (message.clientType == "Web Client")
+            allPlayers += 1;
+        }
+        else if (message.clientType == "Web Client")
         {
             selectSpawn = "Spectator " + spectators.ToString();
             spectators = (spectators + 1) % 5;
