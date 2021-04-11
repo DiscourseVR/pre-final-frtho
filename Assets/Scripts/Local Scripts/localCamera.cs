@@ -8,6 +8,7 @@ public class localCamera : NetworkBehaviour
 {
     public GameObject camera;
     public GameObject part2;
+    public RockVR.Video.Demo.VideoCaptureUI automateForce;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,17 @@ public class localCamera : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
 
+    public void AutomateCamera(bool mode)
+    {
+        if (mode)
+        {
+            automateForce.startRecording();
+        }
+        else
+        {
+            automateForce.stopRecording();
+        }
     }
 }

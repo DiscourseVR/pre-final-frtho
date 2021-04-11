@@ -17,13 +17,11 @@ public class SyncText : NetworkBehaviour
 
     void textChanged(string oldMes, string newMes)
     {
-        Debug.Log("The message have been changed");
         message.GetComponent<TMP_Text>().text = newMes;
     }
 
     void timeChanged(int oldMes, int newMes)
     {
-        Debug.Log("The time have been changed");
-        timer.GetComponent<TMP_Text>().text = (newMes / 60).ToString() + ":" + (newMes % 60).ToString();
+        timer.GetComponent<TMP_Text>().text = "0" + (newMes / 60).ToString() + ":" + ((newMes % 60) < 10 ? "0" : "") + (newMes % 60).ToString();
     }
 }

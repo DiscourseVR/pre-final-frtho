@@ -21,7 +21,7 @@ public class debateManager : NetworkBehaviour
         new intermissionMode { message  = "Waiting For Players", timer = 600 },
         new intermissionMode { message  = "Preperation", timer = 20 },
         new intermissionMode { message  = "Debater 1", timer = 60 },
-        new intermissionMode { message  = "Intermission", timer = 20 },
+        new intermissionMode { message  = "Intermission", timer = 15 },
         new intermissionMode { message  = "Debater 2", timer = 60 }
     };
     
@@ -36,6 +36,21 @@ public class debateManager : NetworkBehaviour
         if (mode == 2 || mode == 0) // start recording here
         {
             Debug.Log("Start or end recording client");
+            RpcAutomateCamera(mode == 2);
+        }
+    }
+
+    [ClientRpc]
+    public void RpcAutomateCamera(bool mode)
+    {
+        string itemName = "CameraTing(Clone)";
+        GameObject recorderCamera = GameObject.Find(itemName);
+
+        if (recorderCamera != null && recorderCamera.transform.Find("VideoCaptureCtrl").gameObject.activeSelf)
+        {
+            Debug.Log("Got the request");
+            localCamera direct_script = recorderCamera.GetComponent<localCamera>();
+            direct_script.AutomateCamera(mode);
         }
     }
 
@@ -52,13 +67,9 @@ public class debateManager : NetworkBehaviour
         {
             if (mode == 0)
             {
-                if (mainScript.players > 0) // should be > 1 but testing rn
+                if (mainScript.players > -1) // should be > 1 but testing rn
                 {
                     nextMode();
-                }
-                else
-                {
-                    Debug.Log(mainScript.players);
                 }
             }
             else

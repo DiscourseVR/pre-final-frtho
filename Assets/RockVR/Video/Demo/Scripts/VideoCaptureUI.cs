@@ -12,6 +12,29 @@ namespace RockVR.Video.Demo
             isPlayVideo = false;
         }
 
+        public void startRecording()
+        {
+            VideoCaptureCtrl.instance.StartCapture();
+            UnityEngine.Debug.Log("Recording started");
+        }
+
+        public void stopRecording()
+        {
+
+            UnityEngine.Debug.Log("Will attempt to stop recording");
+            VideoCaptureCtrl.instance.StopCapture();
+        }
+
+        private void Update()
+        {
+            if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.FINISH)
+            {
+                VideoPlayer.instance.NextVideo();
+                UnityEngine.Debug.Log("Next video ready to go");
+            }
+        }
+
+        /*
         private void OnGUI()
         {
             if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.NOT_START)
@@ -80,5 +103,6 @@ namespace RockVR.Video.Demo
                 }
             }
         }
+        */
     }
 }

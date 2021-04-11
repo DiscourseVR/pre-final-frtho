@@ -206,6 +206,7 @@ MonoBehaviour:
   syncInterval: 0.1
   camera: {fileID: 2358129250223891165}
   part2: {fileID: 2358284829122417665}
+  automateForce: {fileID: 2358284829122417678}
 --- !u!135 &1029458049038729148
 SphereCollider:
   m_ObjectHideFlags: 0
