@@ -13,6 +13,7 @@ public class PlayerOveride : NetworkManager
     public GameObject VRPlayer;
     public GameObject spectator;
     public GameObject recorder;
+    public GameObject spawnLocations;
 
     string wantedMode;
     public void setMode(string wanted)
@@ -40,6 +41,9 @@ public class PlayerOveride : NetworkManager
         conn.Send(characterMessage);
     }
 
+    public int players = 0;
+    public int spectators = 0;
+
     void OnCreateCharacter(NetworkConnection conn, PlayerDetails message)
     {
         Debug.Log("Creating character with mode: " + message.clientType);
@@ -50,7 +54,19 @@ public class PlayerOveride : NetworkManager
 
         // playerPrefab is the one assigned in the inspector in Network
         // Manager but you can use different prefabs per race for example
-        GameObject gameobject = Instantiate(hash[message.clientType]);
+        string selectSpawn = "Camera";
+        if (message.clientType == "VR Client")
+        {
+            selectSpawn = "Player " + players.ToString();
+            players = (players + 1) % 2;
+        }else if (message.clientType == "Web Client")
+        {
+            selectSpawn = "Spectator " + spectators.ToString();
+            spectators = (spectators + 1) % 5;
+        }
+
+        Transform spawn = spawnLocations.transform.Find(selectSpawn);
+        GameObject gameobject = Instantiate(hash[message.clientType], spawn.position, spawn.rotation);
 
         // call this to use this gameobject as the primary controller
         NetworkServer.AddPlayerForConnection(conn, gameobject);
